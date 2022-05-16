@@ -33,12 +33,15 @@ export default function MatchDays() {
       matchesEndpoint.value = '';
   }
 
-  useEffect(() => {
-    axios.get(matchesEndpoint.value).then((response) => {
-      console.log(response.data);
+     useEffect(() => {
+     axios.get(matchesEndpoint.value).then((response) => {
+      console.log(response);
       // check for errors and handle any
-      setMatchDays(response.data.matchDays);
+      setMatchDays(response);
+    }).catch((error)=>{
+      console.log("error:",  error);
     });
+    
   }, [matchesEndpoint.value]);
 
   const handleChange = (event) => {

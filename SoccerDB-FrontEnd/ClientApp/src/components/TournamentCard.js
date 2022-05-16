@@ -58,7 +58,7 @@ export default function MediaCard({
           color='primary'
         >
          {isDisabled && "Coming Soon"} 
-         {!isDisabled && <Link style={{'text-decoration':'none'}} to='tournament'>Learn More</Link>}
+         {!isDisabled && <Link style={{textDecoration:'none'}} to='tournament'>Learn More</Link>}
         </Button>
       </CardActions>
     </Card>
