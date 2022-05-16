@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoccerDB", "SoccerDB\SoccerDB.csproj", "{F560F470-D258-4B10-A809-714185BF4C5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoccerDB", "SoccerDB\SoccerDB.csproj", "{F560F470-D258-4B10-A809-714185BF4C5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoccerDB-FrontEnd", "SoccerDB-FrontEnd\SoccerDB-FrontEnd.csproj", "{D9D052E5-5B96-44AF-9763-E06DF46C5843}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F560F470-D258-4B10-A809-714185BF4C5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F560F470-D258-4B10-A809-714185BF4C5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F560F470-D258-4B10-A809-714185BF4C5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9D052E5-5B96-44AF-9763-E06DF46C5843}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9D052E5-5B96-44AF-9763-E06DF46C5843}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9D052E5-5B96-44AF-9763-E06DF46C5843}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9D052E5-5B96-44AF-9763-E06DF46C5843}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
