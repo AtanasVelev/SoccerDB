@@ -13,12 +13,13 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core//Paper";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import axios from "axios";
 import {
   WC_2014_MATCHDAY_ENDPOINT,
   WC_2018_MATCHDAY_ENDPOINT,
 } from "../common/constants";
+import { getErrorMessage } from "../redux/actions";
 
 function Row(props) {
   const { match } = props;
@@ -54,7 +55,7 @@ function Row(props) {
               <Table size='small' aria-label='purchases'>
                 <TableHead>
                   <TableRow>
-                    <TableCell style={{ "font-weight": "900" }}>
+                    <TableCell style={{ fontWeight: "900" }}>
                       {match.team1.name + ": " + match.score1}
                     </TableCell>
                   </TableRow>
@@ -73,7 +74,7 @@ function Row(props) {
               <Table size='small' aria-label='purchases'>
                 <TableHead>
                   <TableRow>
-                    <TableCell style={{ "font-weight": "900" }}>
+                    <TableCell style={{ fontWeight: "900" }}>
                       {match.team2.name + ": " + match.score2}
                     </TableCell>
                   </TableRow>
@@ -101,7 +102,9 @@ export default function MatchDay() {
   const tournamentYear = useSelector((state) => state.tournamentYear);
   const matchDay = useSelector((state) => state.matchDay);
   const [matches, setMatches] = useState([]);
+  const dispatch = useDispatch();
   const matchesEndpoint = {};
+  
 
   switch (tournamentYear) {
     case "2014":
@@ -114,7 +117,7 @@ export default function MatchDay() {
       matchesEndpoint.value = null;
   }
   const URL = `${matchesEndpoint.value}/${matchDay}`;
-  
+
   useEffect(() => {
     axios
       .get(URL)
@@ -122,9 +125,10 @@ export default function MatchDay() {
         setMatches(response.data.matches);
       })
       .catch((error) => {
-        console.log("error:", error);
+        dispatch(getErrorMessage(error.message));
+        //console.log("error:",error.message);
       });
-  }, [URL]);
+  }, [URL,dispatch]);
 
   return (
     <div>

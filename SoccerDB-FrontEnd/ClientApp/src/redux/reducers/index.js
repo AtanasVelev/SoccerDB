@@ -1,13 +1,14 @@
 import { combineReducers } from 'redux';
-import getTournamentYearReducer from './tournamentYearReducer';
+import tournamentYearReducer from './tournamentYearReducer';
 import tournamentNameReducer from './tournamentNameReducer';
-import getMatchDayReducer from './matchDayReducer'
-
+import matchDayReducer from './matchDayReducer';
+import errorMessageReducer from './errorMessageReducer';
 
 const allReducers = combineReducers({
-  tournamentYear: getTournamentYearReducer,
+  tournamentYear: tournamentYearReducer,
   tournamentName:tournamentNameReducer,
-  matchDay:getMatchDayReducer
-})
+  matchDay:matchDayReducer,
+  errorMessage:errorMessageReducer
+});
 
 export default allReducers;

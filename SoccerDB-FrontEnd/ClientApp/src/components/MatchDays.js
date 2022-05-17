@@ -6,7 +6,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import { useSelector, useDispatch } from "react-redux";
-import { getMatchDay } from "../redux/actions";
+import { getErrorMessage, getMatchDay } from "../redux/actions";
 import axios from "axios";
 import {
   WC_2014_MATCHES_ENDPOINT,
@@ -19,7 +19,6 @@ export default function MatchDays() {
   const tournamentName = useSelector((state) => state.tournamentName);
   const tournamentYear = useSelector((state) => state.tournamentYear);
   const matchDay = useSelector((state) => state.matchDay);
-
   const matchesEndpoint = {};
 
   switch (tournamentYear) {
@@ -31,26 +30,25 @@ export default function MatchDays() {
       break;
     default:
       matchesEndpoint.value = '';
-  }
+  };
 
      useEffect(() => {
      axios.get(matchesEndpoint.value).then((response) => {
-      console.log(response);
-      // check for errors and handle any
-      setMatchDays(response);
+      //console.log(response.data.matchDays);
+      setMatchDays(response.data.matchDays);
+
     }).catch((error)=>{
-      console.log("error:",  error);
+    dispatch(getErrorMessage(error.message));
+      //console.log("error:",  error.message);
     });
     
-  }, [matchesEndpoint.value]);
+  }, [matchesEndpoint.value, dispatch]);
 
   const handleChange = (event) => {
     dispatch(getMatchDay(event.target.value));
   };
-
   return (
-    <Box sx={{ minWidth: 120 }}>
-      
+    <Box sx={{ minWidth: 120 }}>  
       <FormControl fullWidth>
         <InputLabel id='demo-simple-select-label' style={{ fontSize: "1.5vw" }}>
           {tournamentName}
@@ -71,4 +69,4 @@ export default function MatchDays() {
       </FormControl>
     </Box>
   );
-}
+};

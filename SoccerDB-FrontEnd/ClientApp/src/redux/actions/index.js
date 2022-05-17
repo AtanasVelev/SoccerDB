@@ -19,3 +19,10 @@
       payload: matchDay,
     }
   };
+
+  export const getErrorMessage = (errorMessage) => {
+    return {
+      type: 'GET_ERROR_MESSAGE',
+      payload: errorMessage,
+    }
+  };
