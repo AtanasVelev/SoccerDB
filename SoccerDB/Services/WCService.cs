@@ -19,7 +19,7 @@ namespace SoccerDB.Services
         {
             WCMatchesResponse data = await this._wcRepository.Get(wcTournamentYear);
 
-            return ConvertMatchDays(data,matchDay);
+            return ConvertMatchDays(data, matchDay);
         }
 
         public async Task<WCMatchesDTO> GetMatches(string wcTournamentYear)
@@ -32,7 +32,7 @@ namespace SoccerDB.Services
         {
             WCMatchesDTO matches = new WCMatchesDTO();
 
-            if(data.Name!=null &&data.Rounds!=null && data.ErrorMessage == null)
+            if (data.Name != null && data.Rounds != null && data.ErrorMessage == null)
             {
                 matches.MatchDays = data.Rounds.Select(x => x.Name).ToList();
                 return matches;
@@ -41,7 +41,7 @@ namespace SoccerDB.Services
             {
                 matches.ErrorMessage = data.ErrorMessage;
                 return matches;
-            }        
+            }
         }
 
         private WCMatchDayDTO ConvertMatchDays(WCMatchesResponse data, string matchDay)
@@ -50,8 +50,8 @@ namespace SoccerDB.Services
 
             if (data.Name != null && data.Rounds != null && data.ErrorMessage == null)
             {
-                matches.Matches= data.Rounds
-                    .Where(rounds => rounds.Name==matchDay)
+                matches.Matches = data.Rounds
+                    .Where(rounds => rounds.Name == matchDay)
                     .Select(rounds => rounds.Matches).FirstOrDefault();
 
                 return matches;

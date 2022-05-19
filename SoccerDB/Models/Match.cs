@@ -11,7 +11,6 @@ namespace SoccerDB.Models
         public int Number { get; set; }
 
         [JsonProperty("date")]
-        [DisplayFormat(DataFormatString = "{0:MMM dd, yyyy}")]
         public DateTime Date { get; set; }
 
         [JsonProperty("team1")]

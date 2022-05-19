@@ -19,37 +19,10 @@ namespace SoccerDB.Controllers
         }
 
         [HttpGet]
-        [Route("2014/matchday/{matchDay}")]
-        public async Task<IActionResult> GetWC2014MatchDay([FromRoute] string matchDay)
+        [Route("{tournamentYear}/matchday/{matchDay}")]
+        public async Task<IActionResult> GetWC2014MatchDay([FromRoute] string tournamentYear, string matchDay)
         {
-            WCMatchDayDTO response = await this.wcService.GetMatchDay("2014",matchDay);
-
-            if (response.Matches !=null && string.IsNullOrEmpty(response.ErrorMessage))
-            {
-                return this.Ok(response);
-            }
-            return StatusCode(StatusCodes.Status500InternalServerError, response.ErrorMessage);
-        }
-
-        [HttpGet]
-        [AllowAnonymous]
-        [Route("2014/matches")]
-        public async Task<IActionResult> GetWC2014Matches()
-        {
-            WCMatchesDTO response = await this.wcService.GetMatches("2014");
-
-            if (response.MatchDays != null && string.IsNullOrEmpty(response.ErrorMessage))
-            {
-                return this.Ok(response);
-            }
-            return StatusCode(StatusCodes.Status500InternalServerError, response.ErrorMessage);
-        }
-
-        [HttpGet]
-        [Route("2018/matchday/{matchDay}")]
-        public async Task<IActionResult> GetWC2018MatchDay([FromRoute] string matchDay)
-        {
-            WCMatchDayDTO response = await this.wcService.GetMatchDay("2018", matchDay);
+            WCMatchDayDTO response = await this.wcService.GetMatchDay(tournamentYear, matchDay);
 
             if (response.Matches != null && string.IsNullOrEmpty(response.ErrorMessage))
             {
@@ -59,10 +32,11 @@ namespace SoccerDB.Controllers
         }
 
         [HttpGet]
-        [Route("2018/matches")]
-        public async Task<IActionResult> GetWC2018Matches()
+        [AllowAnonymous]
+        [Route("{tournamentYear}/matches")]
+        public async Task<IActionResult> GetWC2014Matches([FromRoute] string tournamentYear)
         {
-            WCMatchesDTO response = await this.wcService.GetMatches("2018");
+            WCMatchesDTO response = await this.wcService.GetMatches(tournamentYear);
 
             if (response.MatchDays != null && string.IsNullOrEmpty(response.ErrorMessage))
             {

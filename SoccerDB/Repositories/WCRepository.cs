@@ -8,7 +8,7 @@ namespace SoccerDB.Repositories
     public class WCRepository : IWCRepository
     {
         private readonly IWCHttpClient _wcHttpClient;
-      
+
         public WCRepository(IWCHttpClient wcHttpClient)
         {
             this._wcHttpClient = wcHttpClient;

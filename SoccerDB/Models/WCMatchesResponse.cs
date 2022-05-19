@@ -9,7 +9,7 @@ namespace SoccerDB.Models
         public string Name { get; set; }
 
         [JsonProperty("rounds")]
-       public ICollection<Round> Rounds { get; set; }
+        public ICollection<Round> Rounds { get; set; }
 
         public string ErrorMessage { get; set; }
     }

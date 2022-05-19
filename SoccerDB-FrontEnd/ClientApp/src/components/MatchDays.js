@@ -34,12 +34,10 @@ export default function MatchDays() {
 
      useEffect(() => {
      axios.get(matchesEndpoint.value).then((response) => {
-      //console.log(response.data.matchDays);
       setMatchDays(response.data.matchDays);
 
     }).catch((error)=>{
     dispatch(getErrorMessage(error.message));
-      //console.log("error:",  error.message);
     });
     
   }, [matchesEndpoint.value, dispatch]);
