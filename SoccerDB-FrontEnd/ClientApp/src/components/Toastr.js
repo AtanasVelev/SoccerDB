@@ -3,8 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../App.css";
 
-
-const Toastr = ({ type,message }) => {
+const Toastr = ({ type, message }) => {
   useEffect(() => {
     switch (type) {
       case "error":
@@ -16,14 +15,14 @@ const Toastr = ({ type,message }) => {
       case "warning":
         toast.warning(message);
         break;
-        default: 
+      default:
         toast.success(message);
     }
   });
 
   return (
     <div>
-      <ToastContainer autoClose={4000}/>
+      <ToastContainer autoClose={4000} />
     </div>
   );
 };

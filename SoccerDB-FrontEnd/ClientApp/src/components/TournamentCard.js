@@ -26,7 +26,7 @@ export default function MediaCard({
   cardDescription,
   tournamentName,
   tournamentYear,
-  isDisabled
+  isDisabled,
 }) {
   const classes = useStyles();
 
@@ -41,10 +41,10 @@ export default function MediaCard({
       <CardActionArea>
         <CardMedia className={classes.media} image={cardImageUrl} />
         <CardContent>
-          <Typography gutterBottom variant='h5' component='h2'>
+          <Typography gutterBottom variant="h5" component="h2">
             {cardHeading}
           </Typography>
-          <Typography variant='body2' color='textSecondary' component='p'>
+          <Typography variant="body2" color="textSecondary" component="p">
             {cardDescription}
           </Typography>
         </CardContent>
@@ -54,11 +54,15 @@ export default function MediaCard({
           onClick={() => {
             handleOnClick(tournamentName);
           }}
-          size='small'
-          color='primary'
+          size="small"
+          color="primary"
         >
-         {isDisabled && "Coming Soon"} 
-         {!isDisabled && <Link style={{textDecoration:'none'}} to='tournament'>Learn More</Link>}
+          {isDisabled && "Coming Soon"}
+          {!isDisabled && (
+            <Link style={{ textDecoration: "none" }} to="tournament">
+              Learn More
+            </Link>
+          )}
         </Button>
       </CardActions>
     </Card>

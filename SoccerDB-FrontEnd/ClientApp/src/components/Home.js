@@ -2,19 +2,19 @@ import React from "react";
 import Header from "./Header";
 import Card from "./TournamentCard";
 import {
-    WC_2014_TXT,
-    WC_2018_TXT,
-    WC_2022_TXT,
-    WC_2014_IMG_URL,
-    WC_2018_IMG_URL,
-    WC_2022_IMG_URL,
-    WC_2014_DESCRIPTION,
-    WC_2018_DESCRIPTION,
-    WC_2022_DESCRIPTION,
-    HEADER_LOGO_URL,
-  } from "../common/constants";
+  WC_2014_TXT,
+  WC_2018_TXT,
+  WC_2022_TXT,
+  WC_2014_IMG_URL,
+  WC_2018_IMG_URL,
+  WC_2022_IMG_URL,
+  WC_2014_DESCRIPTION,
+  WC_2018_DESCRIPTION,
+  WC_2022_DESCRIPTION,
+  HEADER_LOGO_URL,
+} from "../common/constants";
 
-export default function Home(){
+export default function Home() {
   return (
     <div>
       <Header logoURL={HEADER_LOGO_URL} />
@@ -44,12 +44,10 @@ export default function Home(){
             cardDescription={WC_2022_DESCRIPTION}
             tournamentYear={"2022"}
             tournamentName={WC_2022_TXT}
-            isDisabled ={true}
+            isDisabled={true}
           ></Card>
         </div>
       </div>
     </div>
   );
-};
-
-
+}

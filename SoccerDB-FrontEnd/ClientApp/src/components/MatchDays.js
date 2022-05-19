@@ -28,34 +28,33 @@ export default function MatchDays() {
     case "2018":
       matchesEndpoint.value = WC_2018_MATCHES_ENDPOINT;
       break;
-    default:
-      matchesEndpoint.value = '';
-  };
+  }
 
-     useEffect(() => {
-     axios.get(matchesEndpoint.value).then((response) => {
-      setMatchDays(response.data.matchDays);
-
-    }).catch((error)=>{
-    dispatch(getErrorMessage(error.message));
-    });
-    
+  useEffect(() => {
+    axios
+      .get(matchesEndpoint.value)
+      .then((response) => {
+        setMatchDays(response.data.matchDays);
+      })
+      .catch((error) => {
+        dispatch(getErrorMessage(error.message));
+      });
   }, [matchesEndpoint.value, dispatch]);
 
   const handleChange = (event) => {
     dispatch(getMatchDay(event.target.value));
   };
   return (
-    <Box sx={{ minWidth: 120 }}>  
+    <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
-        <InputLabel id='demo-simple-select-label' style={{ fontSize: "1.5vw" }}>
+        <InputLabel id="demo-simple-select-label" style={{ fontSize: "1.5vw" }}>
           {tournamentName}
         </InputLabel>
         <Select
-          labelId='demo-simple-select-label'
-          id='demo-simple-select'
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
           value={matchDay == null ? "" : matchDay}
-          label='MatchDay'
+          label="MatchDay"
           onChange={handleChange}
         >
           {matchDays.map((item, index) => (
@@ -67,4 +66,4 @@ export default function MatchDays() {
       </FormControl>
     </Box>
   );
-};
+}
