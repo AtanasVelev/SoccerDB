@@ -1,17 +1,17 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import Box from "@material-ui/core/Box";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import { useSelector, useDispatch } from "react-redux";
-import { getErrorMessage, getMatchDay } from "../redux/actions";
-import axios from "axios";
+import React from 'react';
+import { useState, useEffect } from 'react';
+import Box from '@material-ui/core/Box';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import { useSelector, useDispatch } from 'react-redux';
+import { getErrorMessage, getMatchDay } from '../redux/actions';
+import axios from 'axios';
 import {
   WC_2014_MATCHES_ENDPOINT,
   WC_2018_MATCHES_ENDPOINT,
-} from "../common/constants";
+} from '../common/constants';
 
 export default function MatchDays() {
   const [matchDays, setMatchDays] = useState([]);
@@ -22,10 +22,10 @@ export default function MatchDays() {
   const matchesEndpoint = {};
 
   switch (tournamentYear) {
-    case "2014":
+    case '2014':
       matchesEndpoint.value = WC_2014_MATCHES_ENDPOINT;
       break;
-    case "2018":
+    case '2018':
       matchesEndpoint.value = WC_2018_MATCHES_ENDPOINT;
       break;
   }
@@ -47,18 +47,18 @@ export default function MatchDays() {
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label" style={{ fontSize: "1.5vw" }}>
+        <InputLabel id='demo-simple-select-label' style={{ fontSize: '1.5vw' }}>
           {tournamentName}
         </InputLabel>
         <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={matchDay == null ? "" : matchDay}
-          label="MatchDay"
+          labelId='demo-simple-select-label'
+          id='demo-simple-select'
+          value={matchDay == null ? '' : matchDay}
+          label='MatchDay'
           onChange={handleChange}
         >
           {matchDays.map((item, index) => (
-            <MenuItem value={item} key={item + "_" + index + item.score1}>
+            <MenuItem value={item} key={item + '_' + index + item.score1}>
               {item}
             </MenuItem>
           ))}
