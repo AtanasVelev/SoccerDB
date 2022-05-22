@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { useDispatch } from 'react-redux';
-import { getMatchDay } from '@babel/eslint-parser../redux/actions';
+import { getMatchDay } from '../redux/actions';
 
 export default function GoBackButton() {
   const navigate = useNavigate();

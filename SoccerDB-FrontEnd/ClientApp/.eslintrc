@@ -1,7 +1,6 @@
 {
   "extends": [
     "eslint:recommended",
-    "plugin:prettier/recommended",
     "plugin:react/recommended"
   ],
   "env": {
@@ -11,12 +10,6 @@
   },
   "parser": "@babel/eslint-parser",
   "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "singleQuote": true
-      }
-    ],
     "no-console": "off",
     "react/prop-types": 0
   }
