@@ -8,6 +8,7 @@ import Select from '@material-ui/core/Select';
 import { useSelector, useDispatch } from 'react-redux';
 import { getErrorMessage, getMatchDay } from '../redux/actions';
 import axios from 'axios';
+import { makeStyles } from '@material-ui/core';
 import {
   WC_2014_MATCHES_ENDPOINT,
   WC_2018_MATCHES_ENDPOINT,
@@ -20,6 +21,15 @@ export default function MatchDays() {
   const tournamentYear = useSelector((state) => state.tournamentYear);
   const matchDay = useSelector((state) => state.matchDay);
   const matchesEndpoint = {};
+
+  const useStyles = makeStyles({
+    InputLabel: {
+      fontSize: '1.5vw'
+    }
+  });
+
+  const classes = useStyles();
+
 
   switch (tournamentYear) {
     case '2014':
@@ -44,10 +54,11 @@ export default function MatchDays() {
   const handleChange = (event) => {
     dispatch(getMatchDay(event.target.value));
   };
+
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
-        <InputLabel id='demo-simple-select-label' style={{ fontSize: '1.5vw' }}>
+        <InputLabel id='demo-simple-select-label' className={classes.InputLabel}>
           {tournamentName}
         </InputLabel>
         <Select

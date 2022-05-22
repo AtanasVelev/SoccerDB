@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import Card from './TournamentCard';
+import { makeStyles } from "@material-ui/core/styles";
 import {
   WC_2014_TXT,
   WC_2018_TXT,
@@ -15,11 +16,23 @@ import {
 } from '../common/constants';
 
 export default function Home() {
+
+  const useStyles = makeStyles({
+    root: {
+      display: '-webkit-inline-box',
+    },
+    card: {
+      padding: '2vw' 
+    }
+  });
+  const classes = useStyles();
+
+
   return (
     <div>
       <Header logoURL={HEADER_LOGO_URL} />
-      <div style={{ display: '-webkit-inline-box' }}>
-        <div style={{ padding: '2vw' }}>
+      <div className={classes.root}>
+        <div className={classes.card}>
           <Card
             cardHeading={WC_2014_TXT}
             cardImageUrl={WC_2014_IMG_URL}
@@ -28,7 +41,7 @@ export default function Home() {
             tournamentName={WC_2014_TXT}
           />
         </div>
-        <div style={{ padding: '2vw' }}>
+        <div className={classes.card}>
           <Card
             cardHeading={WC_2018_TXT}
             cardImageUrl={WC_2018_IMG_URL}
@@ -37,7 +50,7 @@ export default function Home() {
             tournamentName={WC_2018_TXT}
           />
         </div>
-        <div style={{ padding: '2vw' }}>
+        <div className={classes.card}>
           <Card
             cardHeading={WC_2022_TXT}
             cardImageUrl={WC_2022_IMG_URL}
