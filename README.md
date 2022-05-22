@@ -3,7 +3,7 @@
   
 # Used technologies: 
  - React JS(v16) 
- - NET 5
+ - .NET 5
 
 # Home Page:
 ![Untitled66](https://user-images.githubusercontent.com/56757318/169691751-44821c3c-2bab-4560-ad4f-9f92c18ff92a.jpg)
