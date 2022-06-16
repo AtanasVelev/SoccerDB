@@ -2,7 +2,7 @@
   A sample project that uses a public API with data about previous FIFA WC Tournaments
   
 # Used technologies: 
- - React JS(v16) 
+ - React JS(v16) + Redux
  - .NET 5
 
 # Home Page:
