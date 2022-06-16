@@ -1,5 +1,5 @@
 # SoccerDB
-  A sample project that uses a publiv API with data about previous FIFA WC Tournaments
+  A sample project that uses a public API with data about previous FIFA WC Tournaments
   
 # Used technologies: 
  - React JS(v16) 
