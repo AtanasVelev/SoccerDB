@@ -1,6 +1,6 @@
-import React from 'react';
-import Header from './Header';
-import Card from './TournamentCard';
+import React from "react";
+import Header from "./Header";
+import Card from "./TournamentCard";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   WC_2014_TXT,
@@ -13,20 +13,18 @@ import {
   WC_2018_DESCRIPTION,
   WC_2022_DESCRIPTION,
   HEADER_LOGO_URL,
-} from '../common/constants';
+} from "../common/constants";
 
 export default function Home() {
-
   const useStyles = makeStyles({
     root: {
-      display: '-webkit-inline-box',
+      display: "-webkit-inline-box",
     },
     card: {
-      padding: '2vw' 
-    }
+      padding: "2vw",
+    },
   });
   const classes = useStyles();
-
 
   return (
     <div>
@@ -37,7 +35,7 @@ export default function Home() {
             cardHeading={WC_2014_TXT}
             cardImageUrl={WC_2014_IMG_URL}
             cardDescription={WC_2014_DESCRIPTION}
-            tournamentYear={'2014'}
+            tournamentYear={"2014"}
             tournamentName={WC_2014_TXT}
           />
         </div>
@@ -46,7 +44,7 @@ export default function Home() {
             cardHeading={WC_2018_TXT}
             cardImageUrl={WC_2018_IMG_URL}
             cardDescription={WC_2018_DESCRIPTION}
-            tournamentYear={'2018'}
+            tournamentYear={"2018"}
             tournamentName={WC_2018_TXT}
           />
         </div>
@@ -55,7 +53,7 @@ export default function Home() {
             cardHeading={WC_2022_TXT}
             cardImageUrl={WC_2022_IMG_URL}
             cardDescription={WC_2022_DESCRIPTION}
-            tournamentYear={'2022'}
+            tournamentYear={"2022"}
             tournamentName={WC_2022_TXT}
             isDisabled={true}
           ></Card>

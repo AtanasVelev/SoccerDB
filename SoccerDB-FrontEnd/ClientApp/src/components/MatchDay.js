@@ -15,12 +15,12 @@ import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core";
-import axios from "axios";
 import {
   WC_2014_MATCH_DAY_ENDPOINT,
   WC_2018_MATCH_DAY_ENDPOINT,
 } from "../common/constants";
 import { getErrorMessage } from "../redux/actions";
+import { getMatchDay } from "../network/requests";
 
 function Row(props) {
   const { match } = props;
@@ -124,8 +124,7 @@ export default function MatchDay() {
   const URL = `${matchesEndpoint.value}/${matchDay}`;
 
   useEffect(() => {
-    axios
-      .get(URL)
+    getMatchDay(URL)
       .then((response) => {
         setMatches(response.data.matches);
       })
