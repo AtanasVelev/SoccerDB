@@ -1,10 +1,9 @@
-﻿using SoccerDB.Models;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace SoccerDB.Client
 {
     public interface IWCHttpClient
     {
-        Task<WCMatchesResponse> Get(string tournamentYear);
+        Task<string> Get(string tournamentYear);
     }
 }

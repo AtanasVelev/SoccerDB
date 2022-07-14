@@ -1,10 +1,9 @@
-﻿using SoccerDB.Models;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace SoccerDB.Repositories.Interfaces
 {
     public interface IWCRepository
     {
-        Task<WCMatchesResponse> Get(string wcTournamentYear);
+        Task<string> Get(string wcTournamentYear);
     }
 }

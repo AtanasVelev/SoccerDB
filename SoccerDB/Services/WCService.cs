@@ -1,7 +1,8 @@
-﻿using SoccerDB.Models;
+﻿using Newtonsoft.Json;
+using SoccerDB.Models;
 using SoccerDB.Repositories.Interfaces;
 using SoccerDB.Services.Interfaces;
-using System.Collections.Generic;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,18 +18,29 @@ namespace SoccerDB.Services
         }
         public async Task<WCMatchDayDTO> GetMatchDay(string wcTournamentYear, string matchDay)
         {
-            WCMatchesResponse data = await this._wcRepository.Get(wcTournamentYear);
+            string response = await this._wcRepository.Get(wcTournamentYear);
+            WCMatchesResponse matchesResponse = JsonConvert.DeserializeObject<WCMatchesResponse>(response);
 
-            return ConvertMatchDays(data, matchDay);
+            return ConvertMatchDays(matchesResponse, matchDay);
         }
 
         public async Task<WCMatchesDTO> GetMatches(string wcTournamentYear)
         {
-            WCMatchesResponse data = await this._wcRepository.Get(wcTournamentYear);
-            return ConvertMatches(data);
+            try
+            {
+                string response = await this._wcRepository.Get(wcTournamentYear);
+                WCMatchesResponse matchesResponse = JsonConvert.DeserializeObject<WCMatchesResponse>(response);
+                return ConvertMatches(matchesResponse);
+            }
+            catch (Exception ex)
+            {
+                WCMatchesDTO matchesDTO = new();
+                matchesDTO.ErrorMessage = ex.Message;
+                return matchesDTO;
+            }
         }
 
-        private WCMatchesDTO ConvertMatches(WCMatchesResponse data)
+        private static WCMatchesDTO ConvertMatches(WCMatchesResponse data)
         {
             WCMatchesDTO matches = new WCMatchesDTO();
 
@@ -44,7 +56,7 @@ namespace SoccerDB.Services
             }
         }
 
-        private WCMatchDayDTO ConvertMatchDays(WCMatchesResponse data, string matchDay)
+        private static WCMatchDayDTO ConvertMatchDays(WCMatchesResponse data, string matchDay)
         {
             WCMatchDayDTO matches = new WCMatchDayDTO();
 

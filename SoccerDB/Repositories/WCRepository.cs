@@ -1,5 +1,4 @@
-﻿using SoccerDB.Models;
-using SoccerDB.Client;
+﻿using SoccerDB.Client;
 using SoccerDB.Repositories.Interfaces;
 using System.Threading.Tasks;
 
@@ -13,9 +12,9 @@ namespace SoccerDB.Repositories
         {
             this._wcHttpClient = wcHttpClient;
         }
-        public async Task<WCMatchesResponse> Get(string wcTournamentYear)
+        public async Task<string> Get(string wcTournamentYear)
         {
-            WCMatchesResponse response = await _wcHttpClient.Get(wcTournamentYear);
+            string response = await _wcHttpClient.Get(wcTournamentYear);
 
             return response;
         }

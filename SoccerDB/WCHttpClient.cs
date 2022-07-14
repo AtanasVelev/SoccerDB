@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-using SoccerDB.Models;
-using System;
+﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -14,25 +12,21 @@ namespace SoccerDB.Client
             httpClient.BaseAddress = new Uri("https://raw.githubusercontent.com/openfootball/worldcup.json/master/");
             _httpClient = httpClient;
         }
-        public async Task<WCMatchesResponse> Get(string tournamentYear)
+        public async Task<string> Get(string tournamentYear)
         {
             string queryString = $"{tournamentYear}/worldcup.json";
-
-            WCMatchesResponse matchesResponse = null;
 
             try
             {
                 string response = await _httpClient.GetStringAsync(queryString);
 
-                matchesResponse = JsonConvert.DeserializeObject<WCMatchesResponse>(response);
-
-                return matchesResponse;
+                return response;
             }
             catch (Exception ex)
             {
-                matchesResponse.ErrorMessage = ex.Message;
+                //matchesResponse.ErrorMessage = ex.Message;
 
-                return matchesResponse;
+                return ex.Message;
             }
         }
     }
